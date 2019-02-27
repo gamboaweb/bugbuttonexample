@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Home</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <form [formGroup]="configGroup" (ngSubmit)="Submit()">
+      <ion-card>
+          <ion-card-header>
+              <h1>Simple Reactive Form Example For Bug Analysis</h1>
+          </ion-card-header>
+          <ion-card-content>
+              <ion-list radio-group formControlName="confRadio" padding-top>
+                  <ion-list-header>
+                      <h2>Simple Radio</h2>
+                  </ion-list-header>
+                  <ion-item style="width:400px">
+                      <ion-label>Radio 1</ion-label>
+                      <ion-radio value="01"></ion-radio>
+                  </ion-item>
+                  <ion-item style="width:400px">
+                      <ion-label>Radio 2</ion-label>
+                      <ion-radio value="02"></ion-radio>
+                  </ion-item>
+              </ion-list>
+              <ion-list padding-top>
+                  <ion-list-header>
+                      <h2>Pick Date</h2>
+                  </ion-list-header>
+                  <ionic-calendar-date-picker (onSelect)="dateSelected($event)"></ionic-calendar-date-picker>
+                  <!-- <ion-label>Lista de Folgas Adicionadas</ion-label>
+                  <ion-item *ngFor="let folga of folgasExtras; index as i;">
+                      <button ion-button type="button" icon-only (click)="dateRemove(i)">
+                          <ion-icon name="remove-circle"></ion-icon>
+                      </button>
+                      {{folga.dia  | date:'shortDate'}}
+                  </ion-item> -->
+              </ion-list>
+          </ion-card-content>
+      </ion-card>
+      <button ion-button full type="submit" [disabled]="!configGroup.valid">Submit Example</button>
+  </form>
+</ion-content>
